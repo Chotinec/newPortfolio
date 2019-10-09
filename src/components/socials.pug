@@ -1,0 +1,6 @@
+.socials
+  ul.socials__list
+    each social in ['insta', 'vk', 'github']
+      li.socials__item
+        a(class='socials__link' href="#")
+          +icon(social, `socials__icon socials__icon--${social}`)

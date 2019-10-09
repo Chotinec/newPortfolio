@@ -1,0 +1,39 @@
+-
+  var skills = [
+    {
+      "Front-end": [
+      {"name": "HTML5", "parcent": 70}, 
+      {"name": "CSS3", "parcent": 80}, 
+      {"name": "Javascript", "parcent": 70}, 
+      {"name": "Jquery и Vue.js", "parcent": 60}
+      ]
+    },
+    {
+      "Workflow": [
+        {"name": "GIT", "parcent": 80}, 
+        {"name": "Terminal", "parcent": 90}, 
+        {"name": "Gulp", "parcent": 70}, 
+        {"name": "Webpack", "parcent": 60}
+      ]
+    }
+  ]
+
+.section.skills#skills
+  .container.skills__container
+    .skills__description
+      h3.skills__title Чем я могу быть полезен вам
+      p.skills__description-text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+    ul.skills__list
+      each skill in skills
+        each slillsArray, skillName in skill
+          .slills__item-row
+            .skills__section
+              h4.skills__section-title= skillName
+              ul.skills__section-list
+                each skillItem in slillsArray
+                  li.skills__section-item
+                    include skill
+                    +skill(skillItem.name, skillItem.parcent)
+
+
+
