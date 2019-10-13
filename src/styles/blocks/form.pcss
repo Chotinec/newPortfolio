@@ -1,0 +1,89 @@
+.form {
+  width: 100%;
+}
+
+.form__row {
+  display: flex;
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__block {
+  cursor: pointer;
+  margin-right: 50px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form__block-title {
+  opacity: 0.3;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 23px;
+  margin-left: 50px;
+}
+
+.form-field {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $text-color;
+  color: $text-color;
+  outline: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 0 20px 50px;
+
+  &::placeholder {
+    color: $text-color;
+  }
+
+  &:focus {
+    border-color: $hover-color;
+  }
+
+  &:hover {
+    transition: .3s;
+    border-color: $hover-color;
+  }
+} 
+
+.form-field:focus ~ .form-icon {
+  fill: $hover-color;
+}
+
+.form-field:hover ~ .form-icon {
+  transition: .3s;
+  fill: $hover-color;
+}
+
+.form--btn {
+  margin-top: 20px;
+}
+
+.form-icon {
+  fill: $text-color;
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 40px;
+
+  &--user {
+    width: 26px;
+    height: 30px;
+  }
+
+  &--envelope {
+    width: 30px;
+    height: 23px;
+  }
+
+  &--message {
+    width: 30px;
+    height: 30px;
+  }
+}

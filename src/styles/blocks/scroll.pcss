@@ -1,6 +1,4 @@
 .scroll {
-  @include centered('x');
-  bottom: 20px;
   display: flex;
 }
 
@@ -14,4 +12,14 @@
   fill: $text-color;
   width: 22px;
   height: 30px;
+}
+
+.scroll:hover .scroll__icon {
+  transition: .3s;
+  fill: $hover-color;
+}
+
+.scroll:hover .scroll__text {
+  transition: .3s;
+  color: $hover-color;
 }
