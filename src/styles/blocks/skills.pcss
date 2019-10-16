@@ -14,8 +14,9 @@
     left: 0;
     bottom: -8%;
     background: url("../images/content/heands.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
+  
 }
 
 .skills__container {
@@ -53,36 +54,8 @@
   flex-direction: column;
   align-self: flex-end;
   z-index: 10;
-}
 
-.slills__item-row {
-  margin-bottom: 40px;
-
-  &:last-child {
-    margin-bottom: 0;
+  @include desktop {
+    margin-right: 10%;
   }
 }
-
-.skills__section-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 38px;
-}
-
-.skills__section-list {
-  display: flex;
-}
-
-.skills__section-item {
-  margin-right: 45px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-/* .skills__keyboard {
-  position: absolute;
-  left: 0;
-  bottom: -10%;
-} */

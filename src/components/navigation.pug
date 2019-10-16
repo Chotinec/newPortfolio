@@ -1,7 +1,7 @@
 -var navigation_items = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
-
-nav.navigation
-  ul.navigation__list
-    each item in navigation_items
-      .navigation__item
-        a.navigation__link(href="#")= item
+mixin navigation(mod)
+  nav.navigation(class=`navigation--${mod}`)
+    ul(class=`navigation__list`)
+      each item in navigation_items
+        li(class=`navigation__item`)
+          a(href="#" class=`navigation__link`)= item

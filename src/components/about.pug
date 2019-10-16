@@ -4,13 +4,14 @@
   .container.about__container
     .about__content
       .about__info
-        .about__info-pic
-          +image('content/user.jpg', 'about-pic', "my_photo")
-        table.about__info-table
-          each value, key in aboutInfo
-            tr.about__info-row
-              td.about__info-td.about__info-key= key
-              td.about__info-td.about__info-value= value
+        //- .about__info-pic
+        //-   +image('content/user.jpg', 'about-pic', "my_photo")
+        //- table.about__info-table
+        //-   each value, key in aboutInfo
+        //-     tr.about__info-row
+        //-       td.about__info-td.about__info-key= key
+        //-       td.about__info-td.about__info-value= value
+        include user
       .about__description
         p.about__description-text Привет, меня зовут
         h3.about__description-title Артём Хотинец

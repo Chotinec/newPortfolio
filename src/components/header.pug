@@ -3,6 +3,10 @@ header.header
     include logo
   .header__navigation
     include navigation
-  .header__socoials
-    include socials
-    +socials('header')
+    +navigation('header')
+  .header__links
+    .header__socoials
+      include socials
+      +socials('header')
+    .header__hamburger-menu
+      include hamburger-menu

@@ -1,0 +1,8 @@
+.user
+  .user__pic
+    +image('content/user.jpg', 'user__img', "my_photo")
+  table.user__table
+    each value, key in aboutInfo
+      tr.user__row
+        td.user__td.user__td--key= key
+        td.user__td.user__td--value= value  

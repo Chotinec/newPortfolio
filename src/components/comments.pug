@@ -16,23 +16,8 @@
 .section.comments#comments
   .container
     .comments__content
-      .comments__head
-        .comments__title Что обо мне говорят
-        .comments__controls
-          a(class="comments__arrow comments__arrow--prev")
-          a(class="comments__arrow comments__arrow--next")
       .comments__slider
-        ul.comments__slider-list
-          each comment in comments
-            li.comments__slider-item
-              .comment
-                .comment__text= comment.text
-                .comment__author
-                  .comment__author-pic
-                    +image(comment.photo, '.comment__author-img', 'comment_author_photo')
-                  .comment__author-description
-                    h4.comment__author-name= comment.name
-                    .comment__author-job= comment.job
+        include slider_comments
 
 
 

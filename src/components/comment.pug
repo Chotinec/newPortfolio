@@ -1,0 +1,8 @@
+.comment
+  .comment__text= comment.text
+  .comment__author
+    .comment__author-pic
+      +image(comment.photo, '.comment__author-img', 'comment_author_photo')
+    .comment__author-description
+      h4.comment__author-name= comment.name
+      .comment__author-job= comment.job

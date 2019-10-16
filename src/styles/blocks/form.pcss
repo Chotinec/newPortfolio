@@ -39,26 +39,40 @@
   padding: 0 0 20px 50px;
 
   &::placeholder {
+    max-width: 410px;
+    line-height: 36px;
     color: $text-color;
   }
 
   &:focus {
-    border-color: $hover-color;
+    border-color: #5500f2;
+
+    &::placeholder {
+      color: #414c63;
+    } 
   }
 
   &:hover {
     transition: .3s;
-    border-color: $hover-color;
+    border-color: #5500f2;
+
+    &::placeholder {
+      color: #414c63;
+    }    
   }
 } 
 
 .form-field:focus ~ .form-icon {
-  fill: $hover-color;
+  fill: #5500f2;
 }
 
 .form-field:hover ~ .form-icon {
   transition: .3s;
-  fill: $hover-color;
+  fill: #5500f2;
+}
+
+.form-text-area {
+  min-height: 80px;
 }
 
 .form--btn {

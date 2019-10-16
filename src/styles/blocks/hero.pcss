@@ -6,6 +6,11 @@
 .hero__content {
   display: flex;
   @include centered('both');
+
+  @include tablets {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .hero__description {
@@ -15,6 +20,18 @@
   opacity: 0.4;
   color: $text-color;
   text-align: right;
+
+  @include tablets {
+    font-size: 16px;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  @include phones {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
 }
 
 .hero__description-text {
@@ -26,9 +43,24 @@
   font-family: "Open Sans - Extrabold";
   font-size: 72px;
   font-weight: 700;
+  padding: 0 2%;
+  
+
+  @include tablets {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include phones {
+    font-size: 36px;
+  }
 }
 
 .hero__scroll {
   @include centered('x');
   bottom: 20px;
+
+  @include tablets {
+    display: none;
+  }
 }
