@@ -19,7 +19,17 @@
       fill=rgba($text-color, 0.05),
       width=100%,
       height=100%
-    )
+    );
+
+    @include tablets {
+      width: 40px;
+      height: 40px;
+      left: -60px;
+    }
+  }
+
+  @include tablets {
+    font-size: 14px;
   }
 }
 
@@ -28,14 +38,28 @@
 }
 
 .comment__author-pic {
-  min-width: 75px;
-  min-height: 75px;
+  width: 75px;
+  height: 75px;
   overflow: hidden;
   border-radius: 100%;
   margin-right: 30px;
+
+  @include tablets {
+    margin-right: 20px;
+  }
+
+  @include phones {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.comment__author-img {
+  object-fit: cover;
 }
 
 .comment__author-description {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;  
@@ -46,6 +70,11 @@
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 15px;
+  line-height: 24px;
+
+  @include tablets {
+    font-size: 16px;
+  }
 }
 
 .comment__author-job {
@@ -53,4 +82,8 @@
   color: $text-color;
   font-size: 16px;
   font-weight: 400;
+
+  @include tablets {
+    font-size: 14px;
+  }
 }

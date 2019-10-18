@@ -3,9 +3,19 @@
 }
 
 .skill__svg {
-  width: 134px;
-  height: 134px;
+  width: 160px;
+  height: 160px;
   transform: rotate(-180deg);
+
+  @include desktop {
+    width: 144px;
+    height: 144px;
+  }
+
+  @include tablets {
+    width: 124px;
+    height: 124px;
+  }
 }
 
 .skill__circle {

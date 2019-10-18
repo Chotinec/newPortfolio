@@ -9,16 +9,38 @@
   font-weight: 700;
   line-height: 48px;
   margin-bottom: 90px;
+
+  @include desktop {
+    margin-bottom: 60px;
+  }
+
+  @include tablets {
+    font-size: 30px;
+  }
+
+  @include phones {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+
+  }
 }
 
 .preview__slider {
+
   display: flex;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;   
+  }
 }
 
 .preview__display {
-  height: 549px;
+  /* height: 549px; */
+  min-width: 720px;
   width: 66%;
-  margin-right: 10.5%;
+  margin-right: 165px;
   position: relative;
 
   &::before {
@@ -32,6 +54,35 @@
     font-size: 400px;
     font-weight: 800;
     color: $preview-display-color;
+
+    @include desktop {
+      font-size: 300px;
+      right: -125px;
+    }
+
+    @include tablets {
+      top: 40%;
+    }
+
+    @include phones {
+      display: none;
+    }
+  }
+
+  @include desktop {
+    min-width: 540px;
+    margin-right: 125px;
+  }
+
+  @include tablets {
+    width: 90%;
+    margin-bottom: 60px;
+    align-self: flex-start;
+  }
+
+  @include phones{
+    width: 100%;
+    min-width: initial;
   }
 }
 
@@ -55,14 +106,22 @@
 .preview__list {
   position: absolute;
   right: 0;
-  bottom: 60px;
+  bottom: 10%;
   display: flex;
-  width: 712px;
+  width:calc(180 * 4)px;
   overflow: hidden;
+
+  @include desktop {
+    width:calc(180 * 3)px;
+  }
+
+  @include phones {
+    display: none;
+  }
 }
 
 .preview__link {
-  width: 178px;
+  width: 180px;
   height: 100px;
   cursor: pointer;
   position: relative;
@@ -89,8 +148,18 @@
 }
 
 .preview__description {
-  flex: 1;
-  /* width: 24%; */
+  /* flex: 1; */
+  width: 24%;
+
+  @include tablets {
+    width: 70%;
+    text-align: center;
+  }
+
+  @include phones {
+    width: 90%;
+    text-align: left;
+  }
 }
 
 .preview__skills-list {
@@ -100,6 +169,17 @@
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 35px;
+
+  @include tablets {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include phones {
+    font-size: 13px;
+    margin-bottom: 25px;
+    justify-content: right;
+  }
 }
 
 .preview__skills-item {
@@ -120,6 +200,12 @@
   font-weight: 700;
   line-height: 48px;
   margin-bottom: 32px;
+
+  @include phones {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
 }
 
 .preview__info-text{
@@ -129,12 +215,26 @@
   font-weight: 600;
   line-height: 30px;
   margin-bottom: 25px;
+
+  @include tablets {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  @include phones {
+    margin-bottom: 35px;
+  }
 }
 
 .preview__slider-arrows {
   position: absolute;
   right: -50px;
-  bottom: 60px;
+  bottom: 10%;
+
+  @include phones {
+    right: 0;
+    bottom: 10%;
+  }
 }
 
 .preview__slider-arrow{

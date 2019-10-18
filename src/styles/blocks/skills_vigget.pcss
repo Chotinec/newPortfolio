@@ -1,11 +1,11 @@
 .skills-vidget__list {
   display: flex;
   flex-direction: column;
-  align-self: flex-end;
 }
 
 .slills-vidget__item-row {
   margin-bottom: 40px;
+  display: flex;
 
   &:last-child {
     margin-bottom: 0;
@@ -16,16 +16,28 @@
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 38px;
+
+  @include tablets {
+    text-align: center;
+    font-size: 18px;
+  }
 }
 
 .skills-vidget__section-list {
-  display: flex;
-}
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
 
-.skills-vidget__section-item {
-  margin-right: 45px;
+  @include desktop{
+    grid-column-gap: 30px;
+  }
 
-  &:last-child {
-    margin-right: 0;
+  @include tablets {
+    grid-column-gap: 20px;
+  }
+
+  @include phones {
+    margin-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -3,11 +3,20 @@
 }
 
 .form__row {
+  width: 100%;
   display: flex;
   margin-bottom: 40px;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @include tablets {
+    position: relative;
+  }
+
+  @include phones {
+    flex-direction: column;
   }
 }
 
@@ -18,6 +27,14 @@
   display: flex;
   flex-direction: column;
   position: relative;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include phones {
+    margin-right: 0;
+  }
 }
 
 .form__block-title {
@@ -26,6 +43,10 @@
   font-weight: 400;
   margin-bottom: 23px;
   margin-left: 50px;
+
+  @include tablets {
+    font-size: 14px;
+  }
 }
 
 .form-field {
@@ -42,6 +63,10 @@
     max-width: 410px;
     line-height: 36px;
     color: $text-color;
+
+    @include tablets {
+      font-size: 14px;
+    }
   }
 
   &:focus {
@@ -77,6 +102,11 @@
 
 .form--btn {
   margin-top: 20px;
+
+  @include tablets {
+    position: absolute;
+    @include centered('x');
+  }
 }
 
 .form-icon {
