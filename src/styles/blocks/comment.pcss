@@ -1,3 +1,13 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+
+
+  @include phones {
+    align-items: center;
+  }
+}
+
 .comment__text {
   position: relative;
   opacity: 0.5;
@@ -25,6 +35,10 @@
       width: 40px;
       height: 40px;
       left: -60px;
+    }
+
+    @include phones {
+      background: none;
     }
   }
 
@@ -56,6 +70,7 @@
 
 .comment__author-img {
   object-fit: cover;
+  object-position: top;
 }
 
 .comment__author-description {

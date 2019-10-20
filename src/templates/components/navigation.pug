@@ -1,0 +1,35 @@
+-
+  var navigation_items = [
+    {
+      desc: "Главная",
+      link: "hero"
+    }, 
+    {
+      desc: "Обо мне",
+      link: "about"
+    }, 
+    {
+      desc: "Навыки",
+      link: "skills"
+
+    }, 
+    {
+      desc: "Работы", 
+      link: "preview"
+    }, 
+    {
+      desc: "Отзывы",
+      link: "comments"
+    }, 
+    {
+      desc: "Связаться",
+      link: "contact"
+    }
+  ]
+
+mixin navigation(mod)
+  nav.navigation(class=`navigation--${mod}`)
+    ul(class=`navigation__list`)
+      each item in navigation_items
+        li(class=`navigation__item`)
+          a(href=`#${item.link}` class=`navigation__link`)= item.desc

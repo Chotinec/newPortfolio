@@ -70,30 +70,30 @@
   }
 
   &:focus {
-    border-color: #ff9a00;
+    border-color: $hover-color;
 
     &::placeholder {
-      color: #2d3c4e;
+      color: $form-field-focus-placeholder;
     }
   }
 
   &:hover {
     transition: .3s;
-    border-color: #ff9a00;
+    border-color: $hover-color;
 
     &::placeholder {
-      color: #2d3c4e;
+      color: $form-field-focus-placeholder;
     }    
   }
 } 
 
 .form-field:focus ~ .form-icon {
-  fill: #ff9a00;
+  fill: $hover-color;
 }
 
 .form-field:hover ~ .form-icon {
   transition: .3s;
-  fill: #ff9a00;
+  fill: $hover-color;
 }
 
 .form-text-area {

@@ -2,6 +2,21 @@
   margin-bottom: 90px;
   display: flex;
 
+  .disabled {
+    opacity: 0.4;
+
+    &.slider_comments__arrow {
+    &:hover {
+      border: 1px solid #ffffff;
+
+      &:before {
+        background: svg-load('arrow-down.svg', fill=$text-color) center center /
+          contain no-repeat;
+        }
+      }
+    }
+  }
+
   @include tablets {
     margin-bottom: 70px;
   }
@@ -69,7 +84,6 @@
 
 .slider_comments__slider {
   width: 70%;
-  /* overflow: hidden; */
 
   @include desktop {
     width: 90%;
@@ -81,34 +95,22 @@
 }
 
 .slider_comments__list {
-  display: flex;
-  overflow: hidden;
-  /* width: 100%; */
-   
-  &:last-child {
-    margin-right: 0;
-  }
+  will-change: transform;
+  transition: transform 0.3s;
+  
 }
 
 .slider_comments__item {
-  width: 45%;
-  padding-left: 90px;
-  margin-left: 35px;
+    padding-right: 30px;
+    padding-left: 10%;
+    width: 50%;
 
   &:last-child {
     margin-left: 0;
-  }
-
-  @include desktop {
-    margin-right: 25px;
-  }
-
-  @include tablets {
-    padding-left: 50px;
   }
 
   @include phones {
     min-width: 100%;
-    margin-left: 0;
+    padding-left: 0;
   }
 }
