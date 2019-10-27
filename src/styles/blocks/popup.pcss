@@ -4,21 +4,23 @@
   width: 320px;
   position: fixed;
   top: 0;
-  right: 0;
+  right: -320px;
   overflow: hidden;
   height: 100vh;
   background-color:#fff;
   padding-left: 60px;
-  display: none;
+  display: block;
+  transition: transform ease-in-out 1s, opacity ease-in-out 0.5s;
 
-  @include phones {
-    width: 100%;
+  /* @include phones {
     padding-left: 0;
-  }
+  } */
 }
 
-.active {
-  display: block;
+.popup.active-popup {
+  transform: translateX(-100%);
+  opacity: 0.95;
+  transition: transform ease-in-out 1s, opacity ease-in-out 0.5s;
 }
 
 .popup__content {

@@ -1,13 +1,25 @@
 .section.parallax
   .parallax__layer(data-speed="0.3")
-    +image("content/parallax/layer-01.png", "paralax__img")
+    picture.paralax__img
+      source(srcset=require("images/content/parallax/layer-01.png")  media="(min-width: 768px)")
+      img
   .parallax__layer(data-speed="0.4")
-    +image("content/parallax/layer-02.png", "paralax__img")
+    picture.paralax__img
+      source(srcset=require("images/content/parallax/layer-02.png")  media="(min-width: 768px)")
+      img
   .parallax__layer(data-speed="0.5")
-    +image("content/parallax/layer-03.png", "paralax__img")
+    picture.paralax__img
+      source(srcset=require("images/content/parallax/layer-03.png")  media="(min-width: 768px)")
+      img
   .parallax__layer(data-speed="0.8")
-    +image("content/parallax/layer-04.png", "paralax__img")
+    picture.paralax__img
+      source(srcset=require("images/content/parallax/layer-4-5.png")  media="(min-width: 768px)")
+      img
   .parallax__layer(data-speed="0.01")
-    +image("content/parallax/layer-05.png", "paralax__img")
+    picture.paralax__img
+      source(srcset=require("images/content/parallax/layer-05.png")  media="(min-width: 768px)")
+      img
   .parallax__layer(data-speed="0.01")
-    +image("content/parallax/layer-06.png", "paralax__img")
+    picture.paralax__img
+      source(srcset=require("images/content/parallax/layer-06.png")  media="(min-width: 768px)")
+      img

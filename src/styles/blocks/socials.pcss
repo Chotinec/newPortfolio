@@ -10,11 +10,9 @@
       position: relative;
 
       &:hover {
-        transition: .3s;
         border-color: $hover-color;
 
         .socials__icon {
-          transition: .3s;
           fill: $hover-color;
           opacity: 1;
         }
@@ -33,7 +31,6 @@
   &--header {
     .socials__link:hover {
       .socials__icon {
-        transition: .3s;
         fill: $hover-color;
         opacity: 1;
       }
@@ -43,7 +40,6 @@
   &--popup {
     .socials__link:hover {
       .socials__icon {
-        transition: .3s;
         fill: $popup-navigation-social-hover;
         opacity: 1;
       }
@@ -73,4 +69,5 @@
   opacity: 0.3;
   width: 27px;
   height: 25px;
+  transition: .3s;
 }

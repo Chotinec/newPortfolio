@@ -58,11 +58,13 @@
   font-size: 18px;
   font-weight: 700;
   padding: 0 0 20px 50px;
+  transition: .3s;
 
   &::placeholder {
     max-width: 410px;
     line-height: 36px;
     color: $text-color;
+    transition: .3s;
 
     @include tablets {
       font-size: 14px;
@@ -78,7 +80,6 @@
   }
 
   &:hover {
-    transition: .3s;
     border-color: $hover-color;
 
     &::placeholder {
@@ -92,7 +93,6 @@
 }
 
 .form-field:hover ~ .form-icon {
-  transition: .3s;
   fill: $hover-color;
 }
 
@@ -102,6 +102,7 @@
 
 .form--btn {
   margin-top: 20px;
+  transition: .3s;
 
   @include tablets {
     position: absolute;
@@ -115,6 +116,7 @@
   position: absolute;
   left: 0;
   top: 40px;
+  transition: .3s;
 
   &--user {
     width: 26px;

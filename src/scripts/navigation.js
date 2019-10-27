@@ -1,5 +1,3 @@
-console.log('this is popup module');
-
 const popup = document.querySelector(".popup");
 const hamburger = document.querySelector(".hamburger-menu");
 const scroll = document.querySelector(".scroll");
@@ -7,7 +5,7 @@ const scroll = document.querySelector(".scroll");
 hamburger.addEventListener("click", e => {
   e.preventDefault();
   
-  popup.classList.toggle("active");
+  popup.classList.toggle("active-popup");
   hamburger.classList.toggle("open");
 });
 
@@ -22,7 +20,7 @@ popup.addEventListener("click", function(e) {
 function scrollTo(target) {
   if (target.classList.contains("navigation__link")) {
     const scroll_el = target.getAttribute("href");
-    popup.classList.toggle("active");
+    popup.classList.toggle("active-popup");
     hamburger.classList.toggle("open");
     // const html = document.querySelector("html");
     // const section = document.querySelector(scroll_el).offsetTop;

@@ -38,13 +38,12 @@
 
 .preview__display {
   /* height: 549px; */
-  min-width: 720px;
   width: 66%;
   margin-right: 165px;
   position: relative;
 
   &::before {
-    content: "2";
+    content: attr(data-side);
     position: absolute;
     top: 50%;
     transform: translateY(-60%);
@@ -70,7 +69,6 @@
   }
 
   @include desktop {
-    min-width: 540px;
     margin-right: 125px;
   }
 
@@ -108,17 +106,22 @@
   right: 0;
   bottom: 10%;
   display: flex;
-  width:calc(180 * 4)px;
+  justify-content: flex-start;
+  width: 80%;
   overflow: hidden;
 
-  @include desktop {
-    width:calc(180 * 3)px;
+  @include tablets {
+    width: 100%;
   }
 
   @include phones {
     display: none;
   }
 }
+
+.active {
+    border: 2px solid $hover-color;
+  }
 
 .preview__link {
   width: 180px;
@@ -141,10 +144,6 @@
      background-color: $hover-color;
      opacity: .3;
   }
-}
-
-.preview__active {
-  border: 2px solid $hover-color;
 }
 
 .preview__description {
@@ -229,11 +228,11 @@
 .preview__slider-arrows {
   position: absolute;
   right: -50px;
-  bottom: 10%;
+  bottom: 10.6%;
 
   @include phones {
     right: 0;
-    bottom: 10%;
+    /* bottom: 10%; */
   }
 }
 
@@ -243,9 +242,9 @@
   background-color: $preview-slider-arrow-color;
   position: relative;
   display: block;
+  transition: .3s;
 
   &:hover {
-    transition: .3s;
     background-color: $hover-color;
   }
 }

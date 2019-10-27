@@ -30,7 +30,6 @@ new Vue({
 
   methods: {
     onInit() {
-      console.log("init")
       this.$refs.flickity.on('change', (event) => {
         this.currentIndex = event
 
@@ -40,7 +39,7 @@ new Vue({
     },
 
     next() {
-      console.log(this.commentsArr);
+      console.log(this.currentIndex);
       this.$refs.flickity.next();
     },
     
@@ -66,8 +65,8 @@ new Vue({
   mounted() {
     const items = document.querySelectorAll('.slider_comments__item')
 
-    // items.forEach((item) => {
-    //   item.style.height = '100%'
-    // })
+    items.forEach((item) => {
+      item.style.height = '100%'
+    })
   }
 });
