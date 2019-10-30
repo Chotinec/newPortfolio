@@ -17,5 +17,6 @@
   "popup-navigation-social-hover": "#5500f2",
   "hamburger-menu-color": "#414c63",
   "preview-slider-arrow-color": "#353e4e",
-  "form-field-focus-placeholder": "#2d3c4e"
+  "form-field-focus-placeholder": "#2d3c4e",
+  "errors-color": "#cd1515"
 }

@@ -1,17 +1,53 @@
-.form
-  .form__row
-    label.form__block
-      .form__block-title Введите ваше имя
-      input(type="text" placeholder="Ковальчук Дмитрий" class="form-field" required)
-      +icon('user', 'form-icon form-icon--user')
-    label.form__block
-      .form__block-title Введите ваш email
-      input(type="email" placeholder="loftschool@study.com" class="form-field" required)
-      +icon('envelope', 'form-icon form-icon--envelope')
-  .form__row
-    label.form__block
-      .form__block-title Сообщение к письму
-      textarea(name="text" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса" class="form-field form-text-area form-field--message" wrap="hard")
-      +icon('message', 'form-icon form-icon--message')
-  .form__row
-    button(type="submit" class="btn form--btn") Отправить
+script(type="text/x-template")#form-template
+  form(@submit.prevent="sendMessage").form
+    .form__row
+      label.form__block(
+        :class="{'error' : validation.firstError('user.name')}"
+      )
+        .form__block-title Введите ваше имя
+        input(
+          name="name" 
+          type="text" 
+          placeholder="Ковальчук Дмитрий" 
+          v-model="user.name"
+        ).form-field
+        +icon('user', 'form-icon form-icon--user')
+        .contacts__form-error
+            error-tooltip(
+              :errorText="validation.firstError('user.name')"
+            )
+      label.form__block(
+        :class="{'error' : validation.firstError('user.email')}"
+      )
+        .form__block-title Введите ваш email
+        input(
+          name="email" 
+          type="email" 
+          placeholder="loftschool@study.com" 
+          v-model="user.email"
+        ).form-field
+        +icon('envelope', 'form-icon form-icon--envelope')
+        .contacts__form-error
+            error-tooltip(
+              :errorText="validation.firstError('user.email')"
+            )
+    .form__row
+      label.form__block(
+        :class="{'error' : validation.firstError('user.message')}"
+      )
+        .form__block-title Сообщение к письму
+        textarea(
+          name="message" 
+          placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса" 
+          v-model="user.message"
+        ).form-field.form-text-area.form-field--message
+        +icon('message', 'form-icon form-icon--message')
+        .contacts__form-error
+            error-tooltip(
+              :errorText="validation.firstError('user.message')"
+            )
+    .form__row
+      button(
+        type="submit" 
+        class="btn form--btn"
+      ) Отправить

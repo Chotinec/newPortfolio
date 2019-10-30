@@ -32,6 +32,21 @@
     margin-right: 0;
   }
 
+  &.error {
+    .contacts__form-error {
+      display: block;
+    }
+
+    .form-icon {
+      fill: red;
+      opacity: 1;
+    }
+
+    .form-field {
+      border-bottom: 1px solid red;
+    }
+  }
+
   @include phones {
     margin-right: 0;
   }
@@ -132,4 +147,11 @@
     width: 30px;
     height: 30px;
   }
+}
+
+.contacts__form-error {
+  display: none;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
 }

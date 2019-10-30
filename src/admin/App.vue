@@ -6,11 +6,21 @@
   /* TITLE */
   .admin__title {
     font-size: 21px;
-    font-weight: 700;
+    font-weight: 600;
     color: #414c63;
 
     &--about {
       margin-right: 60px;
+    }
+
+    &--form {
+      color: #414c63;
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 1px solid rgba(#1f232d, 0.15);
+      padding-bottom: 25px;
+      padding-left: 10px;
+      margin-bottom: 50px;
     }
   }
   
@@ -19,6 +29,46 @@
     font-size: 16px;
     font-weight: 600;
     color: rgba(65, 76, 99, 0.5);
+
+    &--login-submit {
+      padding: 34px 120px;
+      background-image: linear-gradient(to right, #ad00ed 0%, #5500f2 100%);
+      border-radius: 40px 5px;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: .3s;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+       @include phones {
+        padding: 33px 90px !important;
+      }
+    }
+
+    &--login-close {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      display: inline-block;
+      width: 19px;
+      height: 19px;
+      background: svg-load(
+        "remove.svg",
+        fill=#414c63,
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+      transition: .3s;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
 
     &--add-group {
       width: 21px;
@@ -76,17 +126,17 @@
     }
 
      &--remove-skill-form {
-    display: inline-block;
-    width: 14px;
-    height: 12px;
-    background: svg-load("remove.svg", fill=#bf2929, width=100%, height=100%)
-      center center no-repeat;
-    transition: transform .3s;
+      display: inline-block;
+      width: 14px;
+      height: 12px;
+      background: svg-load("remove.svg", fill=#bf2929, width=100%, height=100%)
+        center center no-repeat;
+      transition: transform .3s;
 
-    &:hover {
-      transform: scale(1.5);
+      &:hover {
+        transform: scale(1.5);
+      }
     }
-  }
 
     &--save-skill-form {
       display: inline-block;
@@ -152,6 +202,154 @@
         )
         center center no-repeat;
       }
+    }
+
+    &--work-form {
+      background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+      border-radius: 25px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: 0.7;;
+      }
+    }
+
+    &--work-cancel {
+      color: #383bcf;
+      font-size: 16px;
+      font-weight: 600;
+      margin-right: 60px;
+      transition: .3s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &--card-edit {
+      opacity: 0.5;
+      color: #414c63;
+      font-size: 16px;
+      font-weight: 600;
+       display: flex;
+      align-items: center;
+       transition: .3s;
+
+      &:after {
+        content: "";
+        width: 17px;
+        height: 17px;
+        background: svg-load(
+          "pencil.svg",
+          fill=rgba(#383bcf, 0.5),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  
+    &--card-remove {
+      opacity: 0.5;
+      color: #414c63;
+      font-size: 16px;
+      font-weight: 600;
+       display: flex;
+      align-items: center;
+       transition: .3s;
+
+      &:after {
+        content: "";
+        width: 17px;
+        height: 17px;
+        background: svg-load(
+          "remove.svg",
+          fill=rgba(#c92e2e, 0.5),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &--add-card {
+      background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 0 !important;
+
+      @include big-phones {
+        padding: 7% !important;
+      }
+    }
+
+    &--upload-comment-photo {
+      color: #383bcf;
+      font-size: 16px;
+      font-weight: 600;
+      transition: .3s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__card-icon {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 20px;
+
+      &:after {
+        content: "+";
+        position: absolute;;
+        @include centered('both');
+        color: #ffffff;
+        font-size: 72px;
+        font-weight: 300;
+
+         @include big-phones {
+          font-size: 30px;
+        }
+
+        @include big-phones {
+          width: 75px;
+          height: 75px;
+        }
+      }
+    }
+
+    &__card-title {
+      color: #ffffff;
+      font-family: "Open Sans";
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 30px;
     }
   }
   
@@ -485,7 +683,7 @@
     padding-bottom: 30px;
   }
 
-  .works__header {
+  .section__header {
     margin-bottom: 60px;
   }
 
@@ -501,7 +699,7 @@
     }
   }
 
-  .works-form--title {
+  /* .works-form--title {
     color: #414c63;
     font-size: 18px;
     font-weight: bold;
@@ -509,17 +707,581 @@
     padding-bottom: 25px;
     padding-left: 10px;
     margin-bottom: 50px;
-  }
+  } */
 
   .works-form__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
 
+     /* @include tablets {
+       grid-template-columns: 1fr;
+     } */
+  }
+
+  .works-form__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+
      @include tablets {
        grid-template-columns: 1fr;
      }
   }
+
+  .works-form__upload-block {
+    cursor: pointer;
+  }
+
+  .form__upload-photo-container {
+    height: 50%;
+    width: 100%;
+    min-height: 250px;
+    max-height: 350px;
+    border: 1px dashed #a1a1a1;
+    background-color: #dee4ed;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form__upload-photo-input {
+    position: absolute;
+    top: 0;
+    left: -9999999px;
+  }
+
+  .form__upload-photo-content {
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form__upload-photo-desc {
+    color: #414c63;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 33.89px;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .works-form__desk {
+    width: 100%;
+  }
+
+  .works-form__row {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--add-tags {
+      margin-bottom: 15px;
+    }
+
+    &--tags {
+      margin-bottom: 40px;
+    }
+
+    &--btns {
+      justify-content: flex-end;
+    }
+  }
+
+  .works-form__col {
+    flex: 1;
+  }
+
+  .works-form__block-title {
+    opacity: 0.5;
+    color: #414c63;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .works-form__field {
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #414c63;
+
+    &::placeholder {
+      opacity: 0.3;
+    }
+
+    &--textarea {
+      resize: vertical;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 30px;
+      border: solid 1px rgba(#414c63, 0.3);
+      border-bottom: 0;
+    }
+  }
+
+  /*WORKS TAGS */
+  .tags__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .tags__item {
+    border-radius: 14.9px;
+    padding: 7px 13px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(40, 51, 64, 0.7);
+    margin-right: 8px;
+    margin-bottom: 5px;
+  }
+
+  .works-cards__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    grid-gap: 30px;
+
+     @include tablets {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+     }
+
+      @include big-phones {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+      }
+  }
+
+  .words-cards__item {
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+  }
+
+  .works-card {
+    height: 100%;
+    position: relative;
+
+    &--edit {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  .works-card__picture {
+    position: relative;
+  }
+
+  .works-card__content {
+    padding: 40px 30px;
+  }
+
+  .works-card__title {
+    color: #414c63;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
+  .works-card__desc {
+    opacity: 0.7;
+    color: #414c63;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  .works-card__link {
+    color: #383bcf;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 45px;
+    transition: .3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .works-card__btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .works-card__tags {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .tags__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .tags__item {
+    opacity: 0.7;
+    color: #283340;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding: 7px 13px;
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  /* COMMENTS */
+  .comments-section {
+    background: url('../images/content/bg/admin_bg.jpg') center center no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+
+  .comments-form {
+    width: 100%;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .comments-form__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+
+    @include big-phones {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .comments-form__upload-block {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .comments-form__upload-photo-container {
+    width: 200px;
+    height: 200px;
+    background: #dee4ed;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 30px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      @include centered('both');
+      width: 84px;
+      height: 112px;
+      background: svg-load("user.svg", fill=#fff, width=100%, height=100%)
+        center center no-repeat;
+    }
+
+     @include big-phones {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .comments-form__upload-photo-input {
+    position: absolute;
+    top: 0;
+    left: -9999999px;
+  }
+
+  .comments-form__desc {
+    width: 70%;
+
+    @include tablets {
+      width: 100%;
+    }
+  }
+
+  .comments-form__row {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--comment {
+      margin-bottom: 50px;
+    }
+
+    &--btns {
+      justify-content: flex-end;
+    }
+  }
+
+  .comments-form__col {
+    flex: 1;
+    margin-right: 30px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .comments-form__block-title {
+    opacity: 0.5;
+    color: #414c63;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .comments-form__field {
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #414c63;
+
+    &::placeholder {
+      opacity: 0.3;
+    }
+
+    &--textarea {
+      resize: vertical;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 30px;
+      border: solid 1px rgba(#414c63, 0.3);
+      border-bottom: 0;
+    }
+  }
+
+  .comments-cards__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    grid-gap: 30px;
+
+     @include tablets {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+     }
+
+      @include big-phones {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+      }
+  }
+
+  .comments-cards__item {
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+  }
+
+  .comments-card {
+    height: 100%;
+    padding: 30px;
+    position: relative;
+
+    &--edit {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  .comments-card__desc {
+    opacity: 0.7;
+    color: #414c63;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  .comments-card__btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .comments-card__author {
+    display: flex;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(#1f232d, 0.15);
+    margin-bottom: 30px;
+  }
+
+  .comments-card__author-pic {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    background: center center no-repeat;
+    background-size: cover;
+  }
+
+  .comments-card__author-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .comments-card__author-name {
+    color: #414c63;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .comments-card__author-position {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(65, 76, 99, 0.5);
+  }
+
+  /* LOGIN */
+  .login {
+    background: linear-gradient(rgba(#2d3c4e, 0.9), rgba(#2d3c4e, 0.9)), 
+      url('../images/content/bg/admin_bg.jpg') center center no-repeat;
+    background-size: cover;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    z-index: 150;
+  }
+
+  .login__content {
+    position: absolute;
+    @include centered('both');
+    background: #fff;
+    padding: 50px 75px;
+  
+    @include phones {
+      padding: 20% 15%;
+    }
+}
+
+.login__title {
+  color: #414c63;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+
+  @include phones {
+    font-size: 30px;
+  }
+}
+
+.login__form {
+  width: 100%;
+}
+
+.login__form-row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--btn {
+    justify-content: center;
+  }
+}
+
+.login__form-block {
+  border-bottom: 1px solid #414c63;
+  width: 100%;
+  padding-bottom: 10px;
+  position: relative;
+
+  &--login {
+    .login__form-block-input {
+      display: inline-block;
+      background: svg-load(
+        "user.svg", 
+        fill=rgba(#414c63), 
+        width=100%, 
+        height=100%
+      ) 
+      0 0 no-repeat;
+    }
+  }
+
+  &--password {
+    .login__form-block-input{
+      display: inline-block;
+      background: svg-load(
+       "key.svg", 
+        fill=rgba(#414c63), 
+        width=100%, 
+        height=100%
+      ) 
+      0 0 no-repeat;
+    }
+  }
+}
+
+.login__form-block-title {
+  opacity: 0.3;
+  color: #414c63;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.login__form-block-input {
+  border: none;
+  background: none;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: $text-color;
+  padding-left: 30px;
+}
 
 </style>
 
@@ -527,6 +1289,33 @@
   
   .wrapper.admin-wrapper
     .main-content
+
+    //- LOGIN
+    .login
+      .login__content
+        a(href="#").btn.btn--login-close
+        .login__title Авторизация
+        .login__form
+          .login__form-row
+            .login__form-col
+              label.login__form-block.login__form-block--login
+                .login__form-block-title Логин
+                input(
+                  type="text"
+                ).login__form-block-input
+          .login__form-row
+            .login__form-col
+              label.login__form-block.login__form-block--password
+                .login__form-block-title Пароль
+                input(
+                  type="password"
+                ).login__form-block-input
+          .login__form-row.login__form-row--btn
+            button(
+              type="submit"
+            ).btn.btn--login-submit Отправить
+
+
     
     //- HEADER
     section.section.header-section
@@ -692,17 +1481,179 @@
     //- WORKS
     section.section.works-section
       .container
-        .works__header
+        .section__header
           h2.admin__title Блок «Работы»
-        .works-form
-          .works-form--title Редактирование работы
-          form.form.works-form__content
+
+          //- WORK FORM
+        form.works-form
+          .admin__title.admin__title--form Редактирование работы
+          .works-form__content
             .works-form__photo
+              label.works-form__upload-block
+                .form__upload-photo-container
+                  input(
+                    type="file"
+                  ).form__upload-photo-input
+                  .form__upload-photo-content
+                    span.form__upload-photo-desc Перетащите или загрузите для загрузки изображения
+                    button.btn.btn--work-form ЗАГРУЗИТЬ
+            .works-form__desk
+              .works-form__row
+                .works-form__col
+                  label.works-form__block
+                    .works-form__block-title Название
+                    input(
+                      type="text" 
+                      name="name"
+                      placeholder="Введите название"
+                    ).works-form__field
+              .works-form__row
+                .works-form__col
+                  label.works-form__block
+                    .works-form__block-title Ссылка
+                    input(
+                      type="text" 
+                      name="link"
+                      placeholder="Вставьте ссылку"
+                    ).works-form__field
+              .works-form__row
+                .works-form__col
+                  label.works-form__block
+                    .works-form__block-title Описание
+                    textarea(
+                      name="description"
+                      rows="4" 
+                      placeholder="Введите описание работы"
+                    ).works-form__field.works-form__field--textarea
+              .works-form__row.works-form__row--add-tags
+                .works-form__col
+                  label.works-form__block
+                    .works-form__block-title Добавление тэга
+                    input(
+                      type="text" 
+                      name="tags"
+                      placeholder="Вставьте ссылку"
+                    ).works-form__field
+              .works-form__row.works-form__row--tags
+                .works-form__col
+                  .works-form__tags
+                    .tags
+                      .tags__list
+              .works-form__row.works-form__row--btns
+                  .works-form__btns
+                    button(
+                      type="button"
+                    ).btn.btn--work-cancel Отмена
+                    button(
+                      type="button"
+                    ).btn.btn--work-form Сохранить
 
-
+        //- WORKS CARDS
+        .works-cards
+          ul.works-cards__list
+            li.words-cards__item
+              button(type="button").btn.btn--add-card
+                .btn__card-icon
+                .btn__card-title Добавить работу
+            li.words-cards__item
+              .works-card
+                .works-card__picture
+                  img(src="../images/content/preview/1.jpg" alt="work picture").works-card__img
+                  .works-card__tags
+                    .tags
+                      .tags__list
+                        each tag in ['html', 'css', 'js']
+                          .tags__item= tag                     
+                .works-card__content
+                  .works-card__title Сайт школы образования
+                  .works-card__desc
+                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  a(href="#").works-card__link= 'http://loftschool.ru'
+                  .works-card__btns
+                    button(
+                      type="button"
+                    ).btn.btn--card-edit Править
+                    button(
+                      type="button"
+                    ).btn.btn--card-remove Удалить
+      
 
     //- COMMENTS
     section.comments-section
-
+      .container
+        .section__header
+          h2.admin__title Блок «Работы»
+        
+        //- COMMENTS FORM
+        form.comments-form
+          .admin__title.admin__title--form Новый отзыв
+          .comments-form__content
+            .comments-form__photo
+              label.comments-form__upload-block
+                .comments-form__upload-photo-container
+                  input(
+                    type="file"
+                  ).comments-form__upload-photo-input
+                .btn.btn--upload-comment-photo Добавить фото  
+            .comments-form__desc
+              .comments-form__row
+                .comments-form__col
+                  label.comments-form__block
+                    .comments-form__block-title Имя автора
+                    input(
+                      type="text" 
+                      name="name"
+                      placeholder="Введите Имя автора"
+                    ).comments-form__field
+                .comments-form__col
+                  label.comments-form__block
+                    .comments-form__block-title Титул автора
+                    input(
+                      type="text" 
+                      name="title"
+                      placeholder="Основатель LoftSchool"
+                    ).comments-form__field
+              .comments-form__row.comments-form__row--comment
+                .comments-form__col
+                  label.comments-form__block
+                    .comments-form__block-title Отзыв
+                    textarea(
+                      name="comment"
+                      rows="4" 
+                      placeholder="Введите отзыв"
+                    ).comments-form__field.comments-form__field--textarea  
+              .comments-form__row.works-form__row--btns
+                .works-form__btns
+                  button(
+                    type="button"
+                  ).btn.btn--work-cancel Отмена
+                  button(
+                    type="button"
+                  ).btn.btn--work-form Сохранить    
+       
+        //- COMMENT CARDS
+        .comments-cards
+          ul.comments-cards__list
+            li.comments-cards__item
+              button(type="button").btn.btn--add-card
+                .btn__card-icon
+                .btn__card-title Добавить отзывы
+            li.comments-cards__item
+              .comments-card
+                .comments-card__author
+                  .comments-card__author-pic
+                    img(src="../images/content/user.jpg" alt="author picture").comments-card__author-img
+                  .comments-card__author-desc
+                    .comments-card__author-name Владимир Сабанцев
+                    .comments-card__author-position Преподаватель
+                .comments-card__desc 
+                  p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                .comments-card__btns
+                  button(
+                    type="button"
+                  ).btn.btn--card-edit Править
+                  button(
+                    type="button"
+                  ).btn.btn--card-remove Удалить
 
 </template>
