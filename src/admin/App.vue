@@ -71,16 +71,28 @@
     }
 
     &--add-group {
-      width: 21px;
-      height: 21px;
-      margin-right: 15px;
-      color: #ffff;
-      font-size: 15px;
-      border-radius: 50%;
-      background-image: linear-gradient(to right, #006aed, #3f35cb);
+      font-weight: 600;
+      color: #383bcf;
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: "+";
+        width: 21px;
+        height: 21px;
+        margin-right: 15px;
+        color: #ffff;
+        font-size: 15px;
+        border-radius: 50%;
+        background-image: linear-gradient(to right, #006aed, #3f35cb);
+        margin-right: 12px;
+        transition: margin-right .3s;
+      }
       
       &:hover {
-        transform: scale(1.1);
+        &:before {
+          margin-right: 20px;
+        }
       }
     }
 
@@ -327,20 +339,20 @@
 
       &:after {
         content: "+";
-        position: absolute;;
+        position: absolute;
         @include centered('both');
         color: #ffffff;
         font-size: 72px;
         font-weight: 300;
 
          @include big-phones {
-          font-size: 30px;
-        }
+           font-size: 62px;
+         }
+      }
 
-        @include big-phones {
-          width: 75px;
-          height: 75px;
-        }
+      @include big-phones {
+        width: 75px;
+        height: 75px;
       }
     }
 
@@ -359,7 +371,7 @@
     height: 100%;
   }
 
-  .header-section {
+  .header-block {
     background-image: linear-gradient(to right, #3e3e59, #454573);
     height: 80px;
   }
@@ -416,10 +428,15 @@
     font-size: 16px;
     font-weight: 400;
     text-decoration: underline;
+    transition: .3s;
+
+    &:hover {
+       opacity: 1;
+    }
   }
 
   /* NAVIGATION */
-  .navigation-section {
+  .navigation-block {
     height: 80px;
   }
 
@@ -532,8 +549,8 @@
     font-weight: 600;
     width: 60%;
     padding-bottom: 10px;
-    /* border-bottom: 1px solid #000; */
     pointer-events: auto;
+    pointer-events: none;
 
     @include tablets {
       width: 70%;
@@ -615,6 +632,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
   }
 
   .skill__input {
@@ -628,6 +646,7 @@
     }
 
     &--new-title-wrapper {
+      width: 50%;
       position: relative;
       margin-right: 12px;
     }
@@ -1189,6 +1208,8 @@
     top: 0;
     left: 0;
     z-index: 150;
+
+    display: none;
   }
 
   .login__content {
@@ -1243,7 +1264,7 @@
       display: inline-block;
       background: svg-load(
         "user.svg", 
-        fill=rgba(#414c63), 
+        fill=rgba(#414c63, 0.3), 
         width=100%, 
         height=100%
       ) 
@@ -1275,11 +1296,11 @@
 
 .login__form-block-input {
   border: none;
-  background: none;
+  /* background: none; */
   width: 100%;
   font-size: 18px;
   font-weight: bold;
-  color: $text-color;
+  color: #414c63;
   padding-left: 30px;
 }
 
@@ -1318,7 +1339,7 @@
 
     
     //- HEADER
-    section.section.header-section
+    .header-block
        .container.admin__container
         header.header
           .header__info
@@ -1330,7 +1351,7 @@
           a(href="#").header__btn Выйти
 
     //- NAVIGATION
-    section.section.navigation-section
+    .navigation-block
       .container.admin__container
         nav.navigation
           ul.navigation__list
@@ -1344,8 +1365,7 @@
         .about__header
           h2.admin__title.admin__title--about Блок «Обо мне»
           .about__header-add-group
-            button(type="button").btn.btn--add-group +
-            .about__add-text Добавить группу
+            button(type="button").btn.btn--add-group Добавить группу
 
         - 
           var skills = [

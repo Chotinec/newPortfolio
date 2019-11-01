@@ -2,59 +2,47 @@ const popup = document.querySelector(".popup");
 const hamburger = document.querySelector(".hamburger-menu");
 const scroll = document.querySelector(".scroll");
 
+const links = document.querySelectorAll("[href^='#']");
+const V = 0.5;
+
+for (const link of links) {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const anchor = document.querySelector(link.getAttribute("href"));
+    const coordAnchor = anchor.getBoundingClientRect().top;
+    const windowY = window.pageYOffset;
+
+    let start = null;
+
+    requestAnimationFrame(step);
+
+    function step(time) {
+      
+      if (start === null) start = time;
+      let progress = time - start;
+
+      let coordY =
+        coordAnchor < 0
+          ? Math.max(windowY - progress / V, windowY + coordAnchor)
+          : Math.min(windowY + progress / V, windowY + coordAnchor);
+
+      window.scrollTo(0, coordY);
+      
+      if (coordY != windowY + coordAnchor) {
+        requestAnimationFrame(step);
+      } else {
+        if (popup.classList.contains("active-popup")) {
+          popup.classList.toggle("active-popup");
+          hamburger.classList.toggle("open");
+        }
+      }
+    }
+  });
+}
+
 hamburger.addEventListener("click", e => {
   e.preventDefault();
   
   popup.classList.toggle("active-popup");
   hamburger.classList.toggle("open");
 });
-
-
-popup.addEventListener("click", function(e) {
-  const target = e.target;
-  
-  scrollTo(target);
-});
-
-
-function scrollTo(target) {
-  if (target.classList.contains("navigation__link")) {
-    const scroll_el = target.getAttribute("href");
-    popup.classList.toggle("active-popup");
-    hamburger.classList.toggle("open");
-    // const html = document.querySelector("html");
-    // const section = document.querySelector(scroll_el).offsetTop;
-    // animationScroll(html, section, 600);
-  }
-}
-
-// function animationScroll(element, to, duration) {
-//   var start = element.scrollTop,
-//     change = to - start,
-//     currentTime = 0,
-//     increment = 20;
-
-//   (function animateScroll() {
-//     currentTime += increment;
-//     var val = Math.easeInOutQuad(currentTime, start, change, duration);
-
-//     element.scrollTop = val;
-//     if (currentTime < duration) {
-//       setTimeout(animateScroll, increment);
-//     } else {
-//       popup.classList.toggle("active");
-//       hamburger.classList.toggle("open");
-//     }
-//   })();
-// }
-
-//t = current time
-//b = start value
-//c = change in value
-//d = duration
-// Math.easeInOutQuad = function(t, b, c, d) {
-//   t /= d / 2;
-//   if (t < 1) return (c / 2) * t * t + b;
-//   t--;
-//   return (-c / 2) * (t * (t - 2) - 1) + b;
-// };

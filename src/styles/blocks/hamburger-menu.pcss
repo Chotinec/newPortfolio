@@ -2,8 +2,9 @@
   z-index: 999999;
   width: 24px;
   height: 22px;
-  position: relative;
+  position: fixed;
   display: none;
+  right: 5%;
 
   @include tablets {
     display: inline-block;
@@ -35,6 +36,7 @@
 
   .hamburger-menu--bar2 {
     top: 9px;
+    display: block;
   }
 
  .hamburger-menu--bar3 {
@@ -49,7 +51,7 @@
 
 .hamburger-menu.open .hamburger-menu--bar2 {
   background: $text-color;
-  left: -30px;
+  display: none;
 }
 
 .hamburger-menu.open .hamburger-menu--bar3 {

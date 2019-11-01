@@ -6,13 +6,13 @@
     opacity: 0.4;
 
     &.slider_comments__arrow {
-    &:hover {
-      border: 1px solid #ffffff;
-
-      &:before {
-        background: svg-load('arrow-down.svg', fill=$text-color) center center /
-          contain no-repeat;
-        }
+      &:hover {
+        border: 1px solid #ffffff;
+        background: svg-load(
+          'arrow-down.svg', 
+          width=12px,
+          height=20px,
+          fill=$text-color) center center no-repeat;
       }
     }
   }
@@ -52,8 +52,7 @@
      transform: rotate(-180deg);
    }
 
-   &:hover {
-      /* transition: .3s; */
+   &:hover  {
       border-color: $hover-color;
       background: svg-load(
       "arrow-down.svg",
@@ -98,7 +97,6 @@
 .slider_comments__list {
   will-change: transform;
   transition: transform 0.3s;
-  
 }
 
 .slider_comments__item {
@@ -114,4 +112,9 @@
     min-width: 100%;
     padding-left: 0;
   }
+}
+
+.flickity-prev-next-button.previous,
+ .flickity-prev-next-button.next {
+  display: none;
 }
