@@ -13,6 +13,9 @@
                 title="Логин"
                 icon="user"
                 v-model="user.name"
+                name="login"
+                class="login__form-block--user"
+                :error="validation.firstError('user.name')"
               )
           .login__form-row
             .login__form-col
@@ -21,6 +24,8 @@
                 title="Пароль"
                 icon="key"
                 v-model="user.password"
+                class="login__form-block--key"
+                :error="validation.firstError('user.password')"
               )
           .login__form-row.login__form-row--btn
             button(
@@ -30,10 +35,21 @@
 
 <script>
 import $axios from "../../requests";
+import { mapMutations } from "vuex";
+import { Validator } from "simple-vue-validator";
 
 export default {
+  mixins: [require("simple-vue-validator").mixin],
   components: {
     loginInput: () => import("./loginInput")
+  },
+  validators: {
+    "user.name": value => {
+      return Validator.value(value).required("Введите имя пользователя");
+    },
+    "user.password": value => {
+      return Validator.value(value).required("Введите пароль");
+    }
   },
   data: () => ({
     user: {
@@ -42,9 +58,19 @@ export default {
     }
   }),
   methods: {
+    ...mapMutations("tooltip", ["SHOW_TOOLTIP"]),
     async login() {
+      if ((await this.$validate()) === false) {
+        return;
+      }
       try {
         const response = await $axios.post('/login', this.user);
+
+        this.SHOW_TOOLTIP({
+          type: "success",
+          text: "Вход в админку..."
+        });
+
         const token = response.data.token;
 
         localStorage.setItem("token", token);
@@ -52,8 +78,10 @@ export default {
       
         this.$router.replace("/");
       } catch (error) {
-        //error handling
-        alert(error);
+        this.SHOW_TOOLTIP({
+          type: "error",
+          text: error.response.data.error
+        });
       }
     }
   }

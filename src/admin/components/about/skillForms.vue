@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState, mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -20,8 +20,20 @@ export default {
   props: {
     showAddForm: Boolean
   },
-  created() {
-    this.fetchCategories();
+  async created() {
+    try {
+      await this.fetchCategories();
+
+      this.SHOW_TOOLTIP({
+        type: "success",
+        text: "Категории загружены"
+      });
+    } catch (error) {
+      this.SHOW_TOOLTIP({
+        type: "error",
+        text: error.response.data.error
+      });
+    }
   }, 
   computed: {
     ...mapState("categories", {
@@ -29,6 +41,7 @@ export default {
     }),
   },
   methods: {
+    ...mapMutations("tooltip", ["SHOW_TOOLTIP"]),
     ...mapActions("categories", ["addCategory", "fetchCategories"]),
   }
 }

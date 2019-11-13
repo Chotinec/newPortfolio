@@ -1,11 +1,17 @@
 <template lang="pug">
   .skill-form.skill-form-edit
-                    .skill-form__head-row
+                    .skill-form__head-row(
+                      :class="{'error' : validation.firstError('title')}"
+                    )
                       input(
                         type="text" 
                         placeholder="Название новой группы"
                         v-model="title"
                       ).skill-form__title
+                      .skill-form__title-error
+                        error-tooltip(
+                          :errorText="validation.firstError('title')"
+                      )
                       .skill-form__head-btns
                         .skill-form__edit-btns
                           button(
@@ -37,23 +43,41 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
+import { Validator } from "simple-vue-validator";
 
 export default {
+  mixins: [require("simple-vue-validator").mixin],
+  validators: {
+    "title": value => {
+      return Validator.value(value).required("Введите название группы");
+    }
+  },
   components: {
-    skillTable: () => import("./skillFormTable")
+    skillTable: () => import("./skillFormTable"),
+    errorTooltip: () => import("../common/errorTooltip")
   },
   data: () => ({
     title: ""
   }),
   methods: {
+    ...mapMutations("tooltip", ["SHOW_TOOLTIP"]),
     ...mapActions("categories", ["addCategory"]),
     async addNewCategory() {
+      if ((await this.$validate()) === false) return;
       try {
         await this.addCategory(this.title);
         this.$emit('closeNewSkillCard');
+
+        this.SHOW_TOOLTIP({
+          type: "success",
+          text: "Категория добавлена"
+        });
       } catch (error) {
-        alert(error.message);
+        this.SHOW_TOOLTIP({
+          type: "error",
+          text: error.response.data.error
+        });
       }
       
     }
@@ -79,6 +103,19 @@ export default {
     justify-content: space-between;
     margin-bottom: 15px;
     position: relative;
+
+    &.error {
+      .skill-form__title-error {
+        display: block;
+      }
+    }
+  }
+
+  .skill-form__title-error {
+    display: none;
+    position: absolute;
+    top: 100%;
+    z-index: 100;
   }
 
   .skill-form__head-btns {

@@ -50,13 +50,14 @@ script(type="text/x-template")#slider-btns
 
 script(type="text/x-template")#slider-description
   .preview__description
+    //- pre {{currentWork}}
     skills(
       :skills="tagsArray"
     )
     h3.preview__info-title {{currentWork.title}}
     .preview__info-text
-      p {{currentWork.desc}}
-    a.link(:href="currentWork.title") Посмотреть сайт
+      p {{currentWork.description}}
+    a.link(:href="currentWork.link") Посмотреть сайт
 
 
 script(type="text/x-template")#slider-skills

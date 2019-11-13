@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Flickity from 'vue-flickity';
+import axios from "axios";
 
 const comment = {
   template: "#comment-template",
@@ -48,18 +49,24 @@ new Vue({
       this.$refs.flickity.previous();
     },
 
-    makeArrWithRequiredImages(data) {
-      return data.map((item) => {
-        const requiredPic = require(`../images/content/comments/${item.photo}`)
-        item.photo = requiredPic
+    makeArrWithAbsoluteImages(data) {
+      return data.map(item => {
+        const requiredPic = `https://webdev-api.loftschool.com/${item.photo}`;
+        item.avatar = requiredPic;
 
-        return item
-      })
-    }
+        return item;
+      });
+    },
   },
 
   created() {
-    this.commentsArr = this.makeArrWithRequiredImages(require("../data/comments.json"));
+    // this.commentsArr = this.makeArrWithRequiredImages(require("../data/comments.json"));
+    axios
+    .get("https://webdev-api.loftschool.com/reviews/205")
+    .then(response => {
+      const data = response.data;
+      this.commentsArr = this.makeArrWithAbsoluteImages(data);
+    });
   },
 
   mounted() {

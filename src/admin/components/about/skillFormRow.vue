@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   props: {
@@ -54,6 +54,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations("tooltip", ["SHOW_TOOLTIP"]),
     ...mapActions("skills", ["removeSkill", "editSkill"]),
     async removeExistedSkill() {
       try {
@@ -61,16 +62,32 @@ export default {
           id: this.skill.id,
           category: this.skill.category
         });
+
+        this.SHOW_TOOLTIP({
+          type: "success",
+          text: "Навык удален"
+        });
       } catch (error) {
-        
+        this.SHOW_TOOLTIP({
+          type: "error",
+          text: error.response.data.error
+        });
       }
     },
     async editExistedSkill() {
       try {
         await this.editSkill(this.editedSkill);
         this.editMode = !this.editMode;
+
+        this.SHOW_TOOLTIP({
+          type: "success",
+          text: "Навык обнавлен"
+        });
       } catch (error) {
-        alert(error);
+        this.SHOW_TOOLTIP({
+          type: "error",
+          text: error.response.data.error
+        });
       }
     }
   }

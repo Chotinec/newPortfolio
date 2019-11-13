@@ -1,4 +1,5 @@
 import Vue from "vue";
+import axios from "axios";
 
 const thumbs = {
   template: "#slider-thumbs",
@@ -33,7 +34,8 @@ const description = {
 
   computed: {
     tagsArray() {
-      return this.currentWork.skills.split(', ');
+      console.log("ura!")
+      return this.currentWork.techs.split(',');
     }
   }
 }
@@ -56,6 +58,7 @@ new Vue({
 
   computed: {
     currentWork() {
+
       return this.works[this.currentIndex];
     }
   },
@@ -73,13 +76,13 @@ new Vue({
       if (value > worksLenghth) this.currentIndex = 0;
     },
 
-    makeArrayWithRequiredImages(data) {
+    makeArrWithAbsoluteImages(data) {
       return data.map(item => {
-        const requiredPic = require(`../images/content/preview/${item.photo}`);
-        item.photo = requiredPic;
+        const absolutePic = `https://webdev-api.loftschool.com/${item.photo}`;
+        item.photo = absolutePic;
 
         return item;
-      })
+      });
     },
 
     handleSlide(direction) {
@@ -98,8 +101,15 @@ new Vue({
     },
   },
 
-  created() {
-    const data = require('../data/preview.json');
-    this.works = this.makeArrayWithRequiredImages(data);
+  async created() {
+    // const data = require('../data/preview.json');
+    // this.works = this.makeArrayWithRequiredImages(data);
+
+    await axios.get("https://webdev-api.loftschool.com/works/205")
+      .then(response => {
+        const data = response.data;
+        this.works = this.makeArrWithAbsoluteImages(data);
+      })
+      .catch(error => console.error(error.message));
   }
 })

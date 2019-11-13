@@ -1,11 +1,17 @@
 <template lang="pug">
   .skill-form(:class="{'blocked': !editMode}")
-                    .skill-form__head-row
+                    .skill-form__head-row(
+                      :class="{'error' : validation.firstError('editedCategory.category')}"
+                    )
                       input(
                         type="text" 
                         placeholder="Название новой группы"
                         v-model="editedCategory.category"
                       ).skill-form__title
+                      .skill-form__title-error
+                        error-tooltip(
+                          :errorText="validation.firstError('editedCategory.category')"
+                      )
                       .skill-form__head-btns
                         .skill-form__edit-btns(v-if="editMode==true")
                           button(
@@ -31,12 +37,20 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
+import { Validator } from "simple-vue-validator";
 
 export default {
+  mixins: [require("simple-vue-validator").mixin],
+  validators: {
+    "editedCategory.category": value => {
+      return Validator.value(value).required("Введите название категории");
+    }
+  },
   components: {
     skillTable: () => import("./skillFormTable"),
-    skillFooter: () => import("./skillFormFooter.vue")
+    skillFooter: () => import("./skillFormFooter.vue"),
+    errorTooltip: () => import("../common/errorTooltip")
   },
   props: {
     category: {
@@ -52,20 +66,40 @@ export default {
     }
   },
   methods: {
+    ...mapMutations("tooltip", ["SHOW_TOOLTIP"]),
     ...mapActions("categories", ["removeCategory", "editCategory"]),
     async removeExistedCategory() {
       try {
          await this.removeCategory(this.category);
+
+        this.SHOW_TOOLTIP({
+          type: "success",
+          text: "Категории удалена"
+        });
       } catch (error) {
-        alert(error);
+        this.SHOW_TOOLTIP({
+          type: "error",
+          text: error.response.data.error
+        });
       }
     },
     async editExistedCategory() {
+      if ((await this.$validate("editedCategory.category")) === false) {
+        return;
+      }
       try {
         await this.editCategory(this.editedCategory);
         this.editMode = !this.editMode;
+
+        this.SHOW_TOOLTIP({
+          type: "success",
+          text: "Категория обнавлена"
+        });
       } catch (error) {
-         alert(error);
+        this.SHOW_TOOLTIP({
+          type: "error",
+          text: error.response.data.error
+        });
       }
     }
   }
@@ -97,6 +131,19 @@ export default {
     justify-content: space-between;
     margin-bottom: 15px;
     position: relative;
+
+    &.error {
+      .skill-form__title-error {
+        display: block;
+      }
+    }
+  }
+
+  .skill-form__title-error {
+    display: none;
+    position: absolute;
+    top: 100%;
+    z-index: 100;
   }
 
   .skill-form__head-btns {

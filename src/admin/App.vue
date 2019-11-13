@@ -1,18 +1,24 @@
 <template lang="pug">
   .content-wrapper
     template
-      admin-header
-      admin-navigation
+      admin-header(v-if="userIsLogged")
+      admin-navigation(v-if="userIsLogged")
       router-view
+    query-tooltip
 
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   components: {
     adminHeader: () => import("./components/common/adminHeader"),
-    adminNavigation: () => import("./components/common/adminNavigation")
+    adminNavigation: () => import("./components/common/adminNavigation"),
+    queryTooltip: () => import("./components/common/querryTooltip")
+  },
+  computed: {
+    ...mapGetters('user', ['userIsLogged'])
   }
 }
 </script>

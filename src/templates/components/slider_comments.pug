@@ -22,7 +22,7 @@ script(type="text/x-template")#comment-template
     .comment__text {{comment.text}}
     .comment__author
       .comment__author-pic
-        img(:src="comment.photo" :alt="comment.name").review__avatar-img
+        img(:src="comment.avatar" :alt="comment.author").review__avatar-img
       .comment__author-description
-        h4.comment__author-name {{comment.name}}
-        .comment__author-job {{comment.job}}
+        h4.comment__author-name {{comment.author}}
+        .comment__author-job {{comment.position}}
