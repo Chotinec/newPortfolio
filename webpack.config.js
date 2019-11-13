@@ -120,7 +120,7 @@ module.exports = (env, argv) => {
       }),
       new HtmlWebpackPlugin({
         template: "src/admin/index.pug",
-        filename: "admin/index.html",
+        filename: "admin.html",
         chunks: ["admin"]
       }),
       new SpriteLoaderPlugin({ plainSprite: true }),
