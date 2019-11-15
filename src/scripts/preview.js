@@ -1,5 +1,5 @@
 import Vue from "vue";
-import axios from "axios";
+import axios from 'axios';
 
 const thumbs = {
   template: "#slider-thumbs",
@@ -16,13 +16,29 @@ const display = {
 
   components: {thumbs, btns},
 
-  props: ['works', 'currentWork', 'currentIndex']
+  props: ['works', 'currentWork', 'currentIndex'],
+
+  methods: {
+    handleSlide(direction) {
+      this.$emit("slide", direction);
+    },
+    handleHover(state) {
+      this.$emit("hover", state);
+    }
+  }
 }
 
 const skills = {
   template: "#slider-skills",
 
-  props: ['skills']
+  props: {
+    currentWork: Object
+  },
+  computed : {
+    tagsArray () {
+      return this.currentWork.techs.split(',');
+    }
+  }
 }
 
 const description = {
@@ -32,12 +48,6 @@ const description = {
 
   props: ['currentWork'],
 
-  computed: {
-    tagsArray() {
-      console.log("ura!")
-      return this.currentWork.techs.split(',');
-    }
-  }
 }
 
 new Vue({
@@ -51,14 +61,16 @@ new Vue({
 
   data: () => ({
     works: [],
+    baseURL: "https://webdev-api.loftschool.com",
+    userID: 205,
     currentIndex: 0,
     maxLenghth: 4,
-    indexStart: 0
+    indexStart: 0,
+    hoverState: "leave"
   }),
 
   computed: {
     currentWork() {
-
       return this.works[this.currentIndex];
     }
   },
@@ -70,19 +82,29 @@ new Vue({
   },
 
   methods: {
+    tick(sec) {
+      setInterval(() => {
+        if (this.hoverState === "leave") {
+          this.currentIndex === this.works.length - 1
+            ? (this.currentIndex = 0)
+            : this.currentIndex++;
+        }
+      }, sec);
+    },
+
     makeInfiniteLoop(value) {
       const worksLenghth = this.works.length - 1;
       if (value < 0) this.currentIndex = worksLenghth;
       if (value > worksLenghth) this.currentIndex = 0;
     },
 
-    makeArrWithAbsoluteImages(data) {
+    makeArrayWithRequiredImages(data) {
       return data.map(item => {
-        const absolutePic = `https://webdev-api.loftschool.com/${item.photo}`;
-        item.photo = absolutePic;
+        const requiredPic = require(`../images/content/preview/${item.photo}`);
+        item.photo = requiredPic;
 
         return item;
-      });
+      })
     },
 
     handleSlide(direction) {
@@ -96,20 +118,44 @@ new Vue({
       }
     },
 
+    handleHover(state) {
+      switch (state) {
+        case "enter":
+          return (this.hoverState = "enter");
+        case "leave":
+          return (this.hoverState = "leave");
+
+        default:
+          break;
+      }
+    },
+
     handleSlideByLink(workIndex) {
       this.currentIndex = workIndex-1;
     },
+
+    makeArrayRequirePhoto(data) {
+      return data.map(item => {
+        const requirePhoto = `${this.baseURL}/${item.photo}`;
+        item.photo = requirePhoto;
+        return item
+      });
+    },
+
+    async getWorks() {
+      await axios.get(`${this.baseURL}/works/${this.userID}`)
+        .then(response => this.works = this.makeArrayRequirePhoto(response.data))
+      console.log(this.works);
+    }
   },
 
-  async created() {
+  created() {
     // const data = require('../data/preview.json');
     // this.works = this.makeArrayWithRequiredImages(data);
+    this.getWorks();
+  },
 
-    await axios.get("https://webdev-api.loftschool.com/works/205")
-      .then(response => {
-        const data = response.data;
-        this.works = this.makeArrWithAbsoluteImages(data);
-      })
-      .catch(error => console.error(error.message));
+  mounted() {
+    this.tick(5000);
   }
 })

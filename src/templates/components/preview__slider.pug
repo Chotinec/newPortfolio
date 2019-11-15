@@ -1,11 +1,12 @@
 script(type="text/x-template")#slider-container
-  .preview__slider
+  .preview__slider(v-if="works.length > 0")
     display(
       :works="works"
       :current-work="currentWork"
       :current-index="currentIndex"
       @slide="handleSlide"
       @link="handleSlideByLink"
+      @hover="handleHover"
     )
     description(
       :current-work="currentWork"
@@ -20,7 +21,9 @@ script(type="text/x-template")#slider-display
     thumbs(
       :works="works"
       :current-work="currentWork"
+      :current-index=" currentIndex"
       @link="workIndex => $emit('link', workIndex)"
+      @hover="handleHover"
     )
     btns(
       @slide="direction => $emit('slide', direction)"
@@ -28,10 +31,19 @@ script(type="text/x-template")#slider-display
 
 
 script(type="text/x-template")#slider-thumbs
-  ul.preview__list(ref="list")
-    li(v-for="work in works" :key="work.id" :class="{active: work.id === currentWork.id}").preview__item
-      a.preview__link(@click.prevent="$emit('link', work.id)")
-        img(:src="work.photo", :alt="work.title").preview__img
+  .preview__list-inner
+    ul.preview__list(ref="list")
+      li(
+        v-for="work, index in works" 
+        :key="work.id" 
+        :class="{active: work.id === currentWork.id}"
+      ).preview__item
+        a.preview__link(
+          @click.prevent="$emit('link', index)"
+          @mouseenter="$emit('hover', 'enter')", 
+          @mouseleave="$emit('hover', 'leave')"
+        )
+          img(:src="work.photo", :alt="work.title").preview__img
 
 
 script(type="text/x-template")#slider-btns
@@ -50,16 +62,15 @@ script(type="text/x-template")#slider-btns
 
 script(type="text/x-template")#slider-description
   .preview__description
-    //- pre {{currentWork}}
     skills(
-      :skills="tagsArray"
+      :current-work="currentWork"
     )
     h3.preview__info-title {{currentWork.title}}
     .preview__info-text
       p {{currentWork.description}}
-    a.link(:href="currentWork.link") Посмотреть сайт
+    a.link(:href="currentWork.title") Посмотреть сайт
 
 
 script(type="text/x-template")#slider-skills
   ul.preview__skills-list
-      li(v-for="skill in skills").preview__skills-item {{skill}}
+      li(v-for="tag in tagsArray").preview__skills-item {{tag}}

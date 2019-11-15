@@ -102,21 +102,29 @@
 }
 
 .preview__list {
-  position: absolute;
+  /* position: absolute;
   right: 0;
-  bottom: 10%;
+  bottom: 10%; */
   display: flex;
   justify-content: flex-start;
-  width: 80%;
-  overflow: hidden;
+  /* width: 80%;
+  overflow: hidden; */
 
-  @include tablets {
-    width: 100%;
-  }
+  &-inner {
+    position: absolute;
+    right: 0;
+    bottom: 10%;
+    width: 80%;
+    overflow: hidden;
 
-  @include phones {
-    display: none;
-  }
+    @include phones {
+      display: none;
+    }
+
+    @include tablets {
+      width: 100%;
+    }
+  } 
 }
 
 .active {
