@@ -131,7 +131,7 @@ new Vue({
     },
 
     handleSlideByLink(workIndex) {
-      this.currentIndex = workIndex-1;
+      this.currentIndex = workIndex;
     },
 
     makeArrayRequirePhoto(data) {

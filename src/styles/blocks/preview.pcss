@@ -37,7 +37,7 @@
 }
 
 .preview__display {
-  /* height: 549px; */
+  height: 336px;
   width: 66%;
   margin-right: 165px;
   position: relative;
@@ -102,38 +102,38 @@
 }
 
 .preview__list {
-  /* position: absolute;
-  right: 0;
-  bottom: 10%; */
-  display: flex;
-  justify-content: flex-start;
-  /* width: 80%;
-  overflow: hidden; */
+  /* display: flex; */
+  /* justify-content: flex-start; */
 
   &-inner {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: rgba(#444, 0.5);
+    width: 200px;
     position: absolute;
     right: 0;
-    bottom: 10%;
-    width: 80%;
+    bottom: 0;
+    height: 100%;
     overflow: hidden;
 
     @include phones {
       display: none;
     }
-
-    @include tablets {
-      width: 100%;
-    }
   } 
 }
 
 .active {
-    border: 2px solid $hover-color;
-  }
+  border: 2px solid $hover-color;
+}
+
+.preview__item {
+  margin: 4px 0;
+}
 
 .preview__link {
   width: 180px;
-  height: 100px;
+  height: 106px;
   cursor: pointer;
   position: relative;
 
@@ -235,8 +235,8 @@
 
 .preview__slider-arrows {
   position: absolute;
-  right: -50px;
-  bottom: 10.6%;
+  right: 0;
+  bottom: -50px;
 
   @include phones {
     right: 0;
