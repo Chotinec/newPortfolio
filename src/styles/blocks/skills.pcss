@@ -1,0 +1,115 @@
+.skills {
+  background: url('../images/content/bg/wood.jpg') center center no-repeat;
+  background-size: cover;
+  padding-top: 129px;
+  padding-bottom: 149px;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 662px;
+    height: 963px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -8%;
+    background: url("../images/content/heands.png") no-repeat;
+    background-size: contain;
+
+    @include desktop {
+      width: 490px;
+      height: 707px;
+      bottom: -7%;
+      left: -6%;
+    }
+
+    @include tablets {
+      bottom: 0;
+      left: 15%;
+      height: 492px;
+      transform: rotate(-90deg);
+    }
+
+    @include phones {
+      left: 0%;
+    }
+  }
+
+  @include tablets {
+    padding-bottom: 355px;
+  }
+  
+}
+
+.skills__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills__description {
+  width: 40%;
+  margin-bottom: 90px;
+  z-index: 10;
+
+  @include desktop {
+    width: 50%;
+  }
+
+  @include tablets {
+    width: 60%;
+    text-align: center;;
+    margin-bottom: 60px;
+  }
+}
+
+.skills__title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36px;
+  margin-bottom: 55px;
+
+  @include desktop {
+    text-align: center;
+  }
+
+  @include tablets {
+    margin-bottom: 30px;
+  }
+
+  @include phones {
+    font-size: 24px;
+    text-align: left;
+  }
+}
+
+.skills__description-text {
+  opacity: 0.5;
+  color: $text-color;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+
+  @include tablets {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  @include phones {
+    text-align: left;
+  }  
+}
+
+.skills__vidget {
+  margin-right: 9%;
+  display: flex;
+  align-self: flex-end;
+  z-index: 10;
+
+  @include tablets {
+    margin-right: 0;
+    align-self: center;
+  }
+}

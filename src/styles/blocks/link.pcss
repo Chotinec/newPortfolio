@@ -1,0 +1,15 @@
+.link {
+  color: $preview-info-link-color;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 48px;
+
+  &::before {
+    content: svg-load('link.svg', fill=$preview-info-link-color, width=15px, height=15px);
+    margin-right: 20px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

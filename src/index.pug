@@ -10,6 +10,12 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        include ./templates/components/welcome.pug
+        include ./templates/components/skills.pug
+        include ./templates/components/preview.pug
+        include ./templates/components/comments_contact.pug
+
+    include ./templates/components/footer.pug
+    include ./templates/components/popup.pug
+
+    include ./templates/entry.pug

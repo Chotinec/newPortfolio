@@ -1,0 +1,135 @@
+.form {
+  width: 100%;
+}
+
+.form__row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include tablets {
+    position: relative;
+  }
+
+  @include phones {
+    flex-direction: column;
+  }
+}
+
+.form__block {
+  cursor: pointer;
+  margin-right: 50px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include phones {
+    margin-right: 0;
+  }
+}
+
+.form__block-title {
+  opacity: 0.3;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 23px;
+  margin-left: 50px;
+
+  @include tablets {
+    font-size: 14px;
+  }
+}
+
+.form-field {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $text-color;
+  color: $text-color;
+  outline: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 0 20px 50px;
+  transition: .3s;
+
+  &::placeholder {
+    max-width: 410px;
+    line-height: 36px;
+    color: $text-color;
+    transition: .3s;
+
+    @include tablets {
+      font-size: 14px;
+    }
+  }
+
+  &:focus {
+    border-color: $hover-color;
+
+    &::placeholder {
+      color: $form-field-focus-placeholder;
+    }
+  }
+
+  &:hover {
+    border-color: $hover-color;
+
+    &::placeholder {
+      color: $form-field-focus-placeholder;
+    }    
+  }
+} 
+
+.form-field:focus ~ .form-icon {
+  fill: $hover-color;
+}
+
+.form-field:hover ~ .form-icon {
+  fill: $hover-color;
+}
+
+.form-text-area {
+  min-height: 80px;
+}
+
+.form--btn {
+  margin-top: 20px;
+  transition: .3s;
+
+  @include tablets {
+    position: absolute;
+    @include centered('x');
+  }
+}
+
+.form-icon {
+  fill: $text-color;
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 40px;
+  transition: .3s;
+
+  &--user {
+    width: 26px;
+    height: 30px;
+  }
+
+  &--envelope {
+    width: 30px;
+    height: 23px;
+  }
+
+  &--message {
+    width: 30px;
+    height: 30px;
+  }
+}
