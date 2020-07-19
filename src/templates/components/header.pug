@@ -1,0 +1,12 @@
+header.header
+  .header__logo
+    include logo
+  .header__navigation
+    include navigation
+    +navigation('header')
+  .header__links
+    .header__socoials
+      include socials
+      +socials('header')
+    .header__hamburger-menu
+      include hamburger-menu

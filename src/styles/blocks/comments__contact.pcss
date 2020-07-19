@@ -1,0 +1,26 @@
+.comments_contact {
+  background: url('../images/content/bg/_autumn.jpg') center center no-repeat;
+  background-size: cover;
+  padding: 150px 0;
+  position: relative;
+  z-index: 10;
+
+  &-comments {
+    margin-bottom: 200px;
+  }
+
+  &:after {
+    content: url("../images/content/bg/leaf_1.png");
+    position: absolute;
+    top: -170px;
+    right: -360px;
+
+    @include desktop {
+      right: -450px;
+    }
+
+    @include tablets {
+      right: -630px;
+    }
+  }
+}

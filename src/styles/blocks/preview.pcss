@@ -1,0 +1,270 @@
+.preview {
+  padding: 200px 0;
+  color: black;
+}
+
+.preview__title {
+  color: $preview-color;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 48px;
+  margin-bottom: 90px;
+
+  @include desktop {
+    margin-bottom: 60px;
+  }
+
+  @include tablets {
+    font-size: 30px;
+  }
+
+  @include phones {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+
+  }
+}
+
+.preview__slider {
+
+  display: flex;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;   
+  }
+}
+
+.preview__display {
+  height: 336px;
+  width: 66%;
+  margin-right: 165px;
+  position: relative;
+
+  &::before {
+    content: attr(data-side);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    line-height: 1;
+    right: -165px;
+    display: inline;
+    font-size: 400px;
+    font-weight: 800;
+    color: $preview-display-color;
+
+    @include desktop {
+      font-size: 300px;
+      right: -125px;
+    }
+
+    @include tablets {
+      top: 40%;
+    }
+
+    @include phones {
+      display: none;
+    }
+  }
+
+  @include desktop {
+    margin-right: 125px;
+  }
+
+  @include tablets {
+    width: 90%;
+    margin-bottom: 60px;
+    align-self: flex-start;
+  }
+
+  @include phones{
+    width: 100%;
+    min-width: initial;
+  }
+}
+
+.preview__content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.preview__pic {
+  width: 100%;
+  height: 100%;
+}
+
+.preview__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview__list {
+  /* display: flex; */
+  /* justify-content: flex-start; */
+
+  &-inner {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: rgba(#444, 0.5);
+    width: 200px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    overflow: hidden;
+
+    @include phones {
+      display: none;
+    }
+  } 
+}
+
+.active {
+  border: 2px solid $hover-color;
+}
+
+.preview__item {
+  margin: 4px 0;
+}
+
+.preview__link {
+  width: 180px;
+  height: 106px;
+  cursor: pointer;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.3);
+    transition: all .3s ease;
+  }
+
+  &:hover::before {
+     background-color: $hover-color;
+     opacity: .3;
+  }
+}
+
+.preview__description {
+  /* flex: 1; */
+  width: 24%;
+
+  @include tablets {
+    width: 70%;
+    text-align: center;
+  }
+
+  @include phones {
+    width: 90%;
+    text-align: left;
+  }
+}
+
+.preview__skills-list {
+  display: flex;
+  opacity: 0.7;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+
+  @include tablets {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include phones {
+    font-size: 13px;
+    margin-bottom: 25px;
+    justify-content: right;
+  }
+}
+
+.preview__skills-item {
+  margin-right: 10px;
+  padding: 16px 20px;
+  color: $preview-skill-color;
+  background-color: rgba($preview-skills-item, 0.1);
+  border-radius: 23px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.preview__info-title {
+  color: $preview-color;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 48px;
+  margin-bottom: 32px;
+
+  @include phones {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+.preview__info-text{
+  opacity: 0.7;
+  color: $preview-color;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 25px;
+
+  @include tablets {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  @include phones {
+    margin-bottom: 35px;
+  }
+}
+
+.preview__slider-arrows {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+
+  @include phones {
+    right: 0;
+    /* bottom: 10%; */
+  }
+}
+
+.preview__slider-arrow{
+  width: 50px;
+  height: 50px;
+  background-color: $preview-slider-arrow-color;
+  position: relative;
+  display: block;
+  transition: .3s;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.arrow {
+  width: 8px;
+  height: 8px;
+  fill: $text-color;
+  @include centered('both');
+
+  &--left {
+    transform: rotate(180deg);
+    transform-origin: center;
+  }
+}

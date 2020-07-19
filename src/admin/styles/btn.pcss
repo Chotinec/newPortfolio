@@ -1,0 +1,366 @@
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(65, 76, 99, 0.5);
+
+    &--login-submit {
+      padding: 34px 120px;
+      background-image: linear-gradient(to right, #ad00ed 0%, #5500f2 100%);
+      border-radius: 40px 5px;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: .3s;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+       @include phones {
+        padding: 33px 90px !important;
+      }
+    }
+
+    &--login-close {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      display: inline-block;
+      width: 19px;
+      height: 19px;
+      background: svg-load(
+        "remove.svg",
+        fill=#414c63,
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+      transition: .3s;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &--add-group {
+      font-weight: 600;
+      color: #383bcf;
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: "+";
+        width: 21px;
+        height: 21px;
+        margin-right: 15px;
+        color: #ffff;
+        font-size: 15px;
+        border-radius: 50%;
+        background-image: linear-gradient(to right, #006aed, #3f35cb);
+        margin-right: 12px;
+        transition: margin-right .3s;
+      }
+      
+      &:hover {
+        &:before {
+          margin-right: 20px;
+        }
+      }
+    }
+
+    &--add-skill {
+      width: 40px;
+      height: 40px;
+      background-image: linear-gradient(to right, #006aed, #3f35cb);
+      border-radius: 50%;
+      font-size: 30px;
+      font-weight: 600;
+      color: #fff;
+
+      transition: transform .3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+  }
+
+    &--edit-skill-form {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: svg-load(
+        "pencil.svg",
+        fill=rgba(#000, 0.5),
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+
+      transition: all .3s;
+
+      &:hover {
+        background: svg-load(
+          "pencil.svg",
+          fill=rgba(#000, 1),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+      }
+    }
+
+     &--remove-skill {
+      display: inline-block;
+      width: 14px;
+      height: 12px;
+      background: svg-load("remove.svg", fill=#bf2929, width=100%, height=100%)
+        center center no-repeat;
+      transition: transform .3s;
+
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+
+    &--save-skill {
+      display: inline-block;
+      width: 15px;
+      height: 12px;
+      background: svg-load("tick.svg", fill=#00d70a, width=100%, height=100%)
+        center center no-repeat;
+      margin-right: 20px !important;
+      transition: transform .3s;
+
+      &:hover {
+       transform: scale(1.5);
+      }
+    }
+
+    
+    &--edit-skill {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: svg-load(
+        "pencil.svg",
+        fill=rgba(#414c63, 0.5),
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+      margin-right: 20px !important;
+
+      transition: all .3s;
+
+      &:hover {
+        background: svg-load(
+        "pencil.svg",
+          fill=rgba(#414c63, 1),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+      }
+    }
+
+    &--trash-skill {
+      display: inline-block;
+      width: 12px;
+      height: 15px;
+      background: svg-load(
+        "trash.svg",
+        fill=rgba(#414c63, 0.5),
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+
+    transition: all .3s;
+
+    &:hover {
+        background: svg-load(
+          "trash.svg",
+          fill=rgba(#414c63, 1),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+      }
+    }
+
+    &--work-form {
+      background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+      border-radius: 25px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: 0.7;;
+      }
+    }
+
+    &--work-cancel {
+      color: #383bcf;
+      font-size: 16px;
+      font-weight: 600;
+      margin-right: 60px;
+      transition: .3s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &--card-edit {
+      opacity: 0.5;
+      color: #414c63;
+      font-size: 16px;
+      font-weight: 600;
+       display: flex;
+      align-items: center;
+       transition: .3s;
+
+      &:after {
+        content: "";
+        width: 17px;
+        height: 17px;
+        background: svg-load(
+          "pencil.svg",
+          fill=rgba(#383bcf, 0.5),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  
+    &--card-remove {
+      opacity: 0.5;
+      color: #414c63;
+      font-size: 16px;
+      font-weight: 600;
+       display: flex;
+      align-items: center;
+       transition: .3s;
+
+      &:after {
+        content: "";
+        width: 17px;
+        height: 17px;
+        background: svg-load(
+          "remove.svg",
+          fill=rgba(#c92e2e, 0.5),
+          width=100%,
+          height=100%
+        )
+        center center no-repeat;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &--add-card {
+      background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 0 !important;
+
+      @include big-phones {
+        padding: 7% !important;
+      }
+    }
+
+    &--remove-tag {
+      content: "";
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      background: svg-load(
+        "remove.svg",
+        fill=#414c63,
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+    }
+
+    &--upload-comment-photo {
+      color: #383bcf;
+      font-size: 16px;
+      font-weight: 600;
+      transition: .3s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &--close-tooltip {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: svg-load(
+        "remove.svg",
+        fill=#fff,
+        width=100%,
+        height=100%
+      )
+      center center no-repeat;
+  }
+
+    &__card-icon {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 20px;
+
+      &:after {
+        content: "+";
+        position: absolute;
+        @include centered('both');
+        color: #ffffff;
+        font-size: 72px;
+        font-weight: 300;
+
+         @include big-phones {
+           font-size: 62px;
+         }
+      }
+
+      @include big-phones {
+        width: 75px;
+        height: 75px;
+      }
+    }
+
+    &__card-title {
+      color: #ffffff;
+      font-family: "Open Sans";
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 30px;
+    }
+  }

@@ -1,0 +1,28 @@
+script(type="text/x-template")#comments-template
+  .slider_comments
+    .slider_comments__head
+        .slider_comments__title Что обо мне говорят
+        .slider_comments__controls
+          button(
+            type="button" 
+            @click="previous()" 
+            :disabled="currentIndex === 0" 
+            :class="{disabled: currentIndex === 0}" class="slider_comments__arrow slider_comments__arrow--prev")
+          button(type="button" @click="next()" :disabled="commentsArr.length === currentIndex" :class="{disabled: commentsArr.length === currentIndex}" class="slider_comments__arrow slider_comments__arrow--next")
+    .slider_comments__slider
+      .slider_comments__list(v-if="commentsArr.length")
+        flickity(ref="flickity" :options="flickityOptions" @init="onInit")
+         .slider_comments__item(v-for="comment in commentsArr" :key="comment.id")
+            comment(
+              :comment="comment"
+            )
+
+script(type="text/x-template")#comment-template
+  .comment
+    .comment__text {{comment.text}}
+    .comment__author
+      .comment__author-pic
+        img(:src="comment.avatar" :alt="comment.author").review__avatar-img
+      .comment__author-description
+        h4.comment__author-name {{comment.author}}
+        .comment__author-job {{comment.position}}

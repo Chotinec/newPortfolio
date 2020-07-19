@@ -1,0 +1,39 @@
+.skills-vidget__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.slills-vidget__item-row {
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.skills-vidget__section-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 38px;
+
+  @include tablets {
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+.skills-vidget__section-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
+
+  @include desktop{
+    grid-column-gap: 30px;
+  }
+
+  @include tablets {
+    grid-column-gap: 20px;
+  }
+
+  @include phones {
+    margin-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
