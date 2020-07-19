@@ -1,0 +1,32 @@
+-
+  var skills = [
+    {
+      "Front-end": [
+      {"name": "HTML5", "parcent": 70}, 
+      {"name": "CSS3", "parcent": 80}, 
+      {"name": "Javascript", "parcent": 70}, 
+      {"name": "Jquery и Vue.js", "parcent": 60}
+      ]
+    },
+    {
+      "Workflow": [
+        {"name": "GIT", "parcent": 80}, 
+        {"name": "Terminal", "parcent": 90}, 
+        {"name": "Gulp", "parcent": 70}, 
+        {"name": "Webpack", "parcent": 60}
+      ]
+    }
+  ]
+
+
+ul.skills-vidget__list
+  each skill in skills
+    each slillsArray, skillName in skill
+      li.slills-vidget__item-row
+        .skills-vidget__section
+          h4.skills-vidget__section-title= skillName
+          ul.skills-vidget__section-list
+            each skillItem in slillsArray
+              li.skills-vidget__section-item
+                include skill
+                +skill(skillItem.name, skillItem.parcent)

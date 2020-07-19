@@ -1,0 +1,53 @@
+.skill {
+  position: relative;
+}
+
+.skill__svg {
+  width: 134px;
+  height: 134px;
+  transform: rotate(-180deg);
+}
+
+.skill__circle {
+  fill: transparent;
+}
+
+.skill__circle--under {
+  stroke: #393939;
+  stroke-width: 2px;
+}
+
+.skill__circle--above {
+  stroke-width: 5px;
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
+  animation: fill 100s linear infinite;
+  animation-play-state: paused;
+}
+
+.skill__circle--above[style="animation-delay: -100s"] {
+  animation: initial;
+  stroke-dashoffset: 0;
+}
+
+.skill__name {
+  @include centered('both');
+  opacity: 0.5;
+  color: $text-color;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+
+}
+
+@keyframes fill {
+  from {
+    stroke-dashoffset: 251;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+

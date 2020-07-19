@@ -1,0 +1,25 @@
+.scroll {
+  display: flex;
+}
+
+.scroll__text {
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.scroll__icon {
+  fill: $text-color;
+  width: 22px;
+  height: 30px;
+}
+
+.scroll:hover .scroll__icon {
+  transition: .3s;
+  fill: $hover-color;
+}
+
+.scroll:hover .scroll__text {
+  transition: .3s;
+  color: $hover-color;
+}

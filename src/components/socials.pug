@@ -1,0 +1,7 @@
+mixin socials(mod)
+  .socials(class=`socials--${mod}`)
+    ul.socials__list
+      each social in ['insta', 'vk', 'github']
+        li(class="socials__item")
+          a(class=`socials__link` href="#")
+            +icon(social, `socials__icon`)

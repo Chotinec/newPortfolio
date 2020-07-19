@@ -1,0 +1,61 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-right: 20px; */
+}
+
+.user__pic {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 80px;
+
+  @include tablets {
+    width: 172px;
+    height: 172px;
+    margin-bottom: 60px;
+  }
+
+  @include phones {
+    margin-bottom: 30px;
+  }
+}
+
+.user__img {
+  border-radius: 50%;
+}
+
+.user__row {
+  color: $text-color;
+  font-size: 16px;
+  font-weight: 400;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include tablets {
+    font-size: 14px;
+  }
+}
+
+.user__td {
+  padding-bottom: 10px;
+
+  &--key {
+    opacity: 0.15;
+    padding-right: 100px;
+
+    @include tablets {
+      padding-right: 40px;
+    }
+
+    @include phones {
+      padding-right: 60px;
+    }
+  }
+
+  &--value {
+    opacity: 1;
+  }
+}

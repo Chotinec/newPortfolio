@@ -1,8 +1,14 @@
 {
-  "text-color": "#414c63",
+  "text-color": "#ffffff",
   "links-color": "#4b6fd7",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "480px",
+  "hover-color": "#ff9a00",
+  "preview-color": "#333c49",
+  "preview-skill-color": "#2f3642",
+  "preview-display-color": "#e6e6e6",
+  "preview-skills-item": "#7aa0c5",
+  "preview-info-link-color": "#586ed3"
 }
