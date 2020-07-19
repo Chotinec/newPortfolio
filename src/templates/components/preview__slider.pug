@@ -1,0 +1,64 @@
+script(type="text/x-template")#slider-container
+  .preview__slider
+    display(
+      :works="works"
+      :current-work="currentWork"
+      :current-index="currentIndex"
+      @slide="handleSlide"
+      @link="handleSlideByLink"
+    )
+    description(
+      :current-work="currentWork"
+    )
+
+
+script(type="text/x-template")#slider-display
+  .preview__display(:data-side="currentIndex+1") 
+    .preview__content
+      .preview__pic
+        img(:src="currentWork.photo", :alt="currentWork.title").preview__img
+    thumbs(
+      :works="works"
+      :current-work="currentWork"
+      @link="workIndex => $emit('link', workIndex)"
+    )
+    btns(
+      @slide="direction => $emit('slide', direction)"
+    )
+
+
+script(type="text/x-template")#slider-thumbs
+  ul.preview__list(ref="list")
+    li(v-for="work in works" :key="work.id" :class="{active: work.id === currentWork.id}").preview__item
+      a.preview__link(@click.prevent="$emit('link', work.id)")
+        img(:src="work.photo", :alt="work.title").preview__img
+
+
+script(type="text/x-template")#slider-btns
+  .preview__slider-arrows
+    button(
+        @click.prevent="$emit('slide', 'next')"
+        class="preview__slider-arrow previewslider-arrow--right"
+      )
+      +icon('arrow-down', 'arrow arrow--right')
+    button(
+        @click.prevent="$emit('slide', 'prev')"
+        class="preview__slider-arrow previewslider-arrow--left"
+      )
+      +icon('arrow-down', 'arrow arrow--left')
+
+
+script(type="text/x-template")#slider-description
+  .preview__description
+    skills(
+      :skills="tagsArray"
+    )
+    h3.preview__info-title {{currentWork.title}}
+    .preview__info-text
+      p {{currentWork.desc}}
+    a.link(:href="currentWork.title") Посмотреть сайт
+
+
+script(type="text/x-template")#slider-skills
+  ul.preview__skills-list
+      li(v-for="skill in skills").preview__skills-item {{skill}}

@@ -1,0 +1,30 @@
+script(type="text/x-template")#skills-list
+  ul.skills-vidget__list
+    li.slills-vidget__item(v-for="skill in skills" :key="skill.skillsGroup")
+      skills-row(
+        :skill="skill"
+      )
+        
+
+script(type="text/x-template")#skills-row
+  .slills-vidget__item-row
+    .skills-vidget__section
+        h4.skills-vidget__section-title {{skill.skillsGroup}}
+        ul.skills-vidget__section-list
+            li.skills-vidget__section-item(v-for="(skillParcent, skillName) in skill.skills" :key="skill.id" )
+              skill(
+                :skill-name="skillName"
+                :skill-parcent="skillParcent"
+              )
+              
+
+script(type="text/x-template")#skill
+  .skill
+    svg(class="skill__svg" viewBox="0 0 100 100" preserveAspectRatio="none")
+      defs
+        linearGradient#circle-gradient(x1="0%" y1="0%" x2="0%" y2="100%")
+          stop(offset="0%" stop-color="#d0731b")
+          stop(offset="100%" stop-color="#dc9322")
+      circle(cx="50" cy="50" r="40" class="skill__circle skill__circle--under")
+      circle(cx="50" cy="50" r="40" ref="color-circle" stroke="url(#circle-gradient)" class="skill__circle skill__circle--above") 
+    .skill__name {{skillName}}
